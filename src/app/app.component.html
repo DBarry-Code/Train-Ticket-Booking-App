@@ -33,7 +33,10 @@
           </li>
           <!-- cart -->
           <li class="nav-item">
-            <a class="nav-link fw-semibold text-white me-1" href="#">Login</a>
+            <a class="nav-link fw-semibold text-white me-1" (click)="openLogin()">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold text-white me-1" (click)="openRegister()">Register</a>
           </li>
         </ul>
       </div>
@@ -51,3 +54,91 @@
   crossorigin="anonymous"
 ></script>
 <router-outlet />
+
+<div class="modal" id="registerModel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button
+          (click)="closeRegister()"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6">
+            <label>First Name</label>
+            <input [(ngModel)]="registerObj.firstName" type="text" class="form-control" />
+          </div>
+          <div class="col-6">
+            <label>Last Name</label>
+            <input [(ngModel)]="registerObj.lastName" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label>Email</label>
+            <input [(ngModel)]="registerObj.email" type="text" class="form-control" />
+          </div>
+          <div class="col-6">
+            <label>Phone</label>
+            <input [(ngModel)]="registerObj.phone" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label>Password</label>
+            <input [(ngModel)]="registerObj.password" type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          (click)="closeRegister()"
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button (click)="onRegister()" type="button" class="btn btn-success">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="loginModel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button
+          (click)="closeLogin()"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <label>Phone</label>
+            <input [(ngModel)]="loginObj.phone" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label>Password</label>
+            <input [(ngModel)]="loginObj.password" type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="closeLogin()" type="button" class="btn btn-danger">Close</button>
+        <button (click)="onLogin()" type="button" class="btn btn-success">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
